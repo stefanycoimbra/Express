@@ -1,6 +1,6 @@
 # Express
 
-## <img src="https://img.icons8.com/color/30/000000/task--v1.png"/> Algoritmos implementados
+## <img src="https://img.icons8.com/color/30/000000/task--v1.png"/> O que é Express?
 ### * Uma aplicação para compartilhamento de viagem entre cidades. De um lugar para o outro num piscar de olhos!
 
 ## <img src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/30/000000/external-clipboard-advertising-kiranshastry-lineal-color-kiranshastry.png"/> Como rodar os códigos?
