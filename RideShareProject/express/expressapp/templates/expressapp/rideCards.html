@@ -1,0 +1,42 @@
+<div class="row ng-scope">
+    {% for ride in rides %}
+    <div class="col-md-9 col-md-pull-3" style="margin: auto">
+        <section class="search-result-item py-5 my-3">
+            <a class="image-link px-1" href="#"><img class="image"
+                    src="https://bootdey.com/img/Content/avatar/avatar1.png" />
+            </a>
+            <div class="search-result-item-body">
+                <div class="row">
+                    <div class="col-sm-9">
+                        <h4 class="search-result-item-heading">
+                            Name: {{request.user.get_full_name|default:request.user.username}}
+                        </h4>
+                        <p class="info">
+                            Data: {{ride.date_of_trip|date:'d-m-Y'}}<br />Horário de saída:
+                            {{ride.time_of_trip}}
+                        </p>
+                        <p class="description">
+                            Partida: {{ride.source}}<br />Destino:
+                            {{ride.destination}}<br />Lugares disponíveis:
+                            {{ride.vacant_seats}}<br />Detalhes do ponto de encontro:
+                            {{ride.details}}
+                        </p>
+                    </div>
+                    <div class="col-sm-3 text-align-center">
+                        <h5 class="value3 mt-sm">Carro: {{ride.car_name}} <br />Placa: {{ride.car_id}}</h5>
+                        <p class="value3 mt-sm">R$. {{ride.price}}</p>
+                        <p class="fs-mini text-muted">Por pessoa</p>
+                        <form action="{% url 'rideCards' ride.id %}?number={{number}}" method="post">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-info" {% if ride.vacant_seats <= 0 %}disabled{% endif %}>Reserve agora</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+    {% empty %}
+    <h3 class="my-3">Sem corridas disponíveis!</h3>
+    {% endfor %}
+</div>
+</div>

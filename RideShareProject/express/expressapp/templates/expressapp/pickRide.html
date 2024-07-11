@@ -1,0 +1,56 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<section id="pickRide">
+    <div class="container d-block my-2 px-0 pb-5">
+        <h2 class="py-3">Escolha sua corrida</h2>
+        <form name="ChooseRideForm" action="{% url 'rides' %}" method="post" class="text-left">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="leave">Partida</label>
+                <input type="text" class="form-control" id="leave" name="leave" placeholder="Saindo de..."
+                    required>
+            </div>
+            <div class="form-group">
+                <label for="arrive">Destino</label>
+                <input type="text" class="form-control" id="arrive" name="arrive" placeholder="Indo para..."
+                    required>
+            </div>
+            <div class="form-group">
+                <!-- Input field along with
+                calendar icon and -->
+                <!-- <div class="input-group date "> -->
+                    <!-- Sets the calendar icon -->
+                    <!-- <span class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa fa-calendar calenderIcon"></i>
+                        </span>
+                    </span> -->
+                    <!-- Accepts the input from calendar -->
+                    <label for="date">Data</label>
+                    <input class="form-control" type="date" placeholder="Data da corrida..." name="date">
+                <!-- </div> -->
+            </div>
+            <div class="form-group">
+
+                <label for="number">Número de passageiros</label>
+                <div class="input-group number-spinner">
+                    <span class="input-group-prepend">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-circle-minus" data-dir="dwn"></i>
+                        </span>
+                    </span>
+                    <input type="number" class="form-control" placeholder="Quantidade de passageiros" required
+                        autocomplete="off" name="number" oninput="validity.valid||(value='');" min="0" step="1" maxlength="10">
+                    <span class="input-group-prepend" data-dir="up">
+                        <span class="input-group-text">
+                            <i class="fa-solid fa-circle-plus"></i>
+                        </span>
+                    </span>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-outline-info">Procura</button>
+        </form>
+    </div>
+</section>
+{% endblock content %}

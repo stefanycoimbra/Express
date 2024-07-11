@@ -1,0 +1,21 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<div class="moda">
+    <div class="modal-dialog modal-confirm">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h4 class="text-center">Prontinho!</h4>
+            </div>
+            <div class="modal-body">
+            <p class="text-center">Sua reserva foi confirmada com sucesso.</p>
+            </div>
+            <a href="{% url 'index' %}" class="modal-footer">
+            <button class="btn btn-success btn-block" data-dismiss="modal">
+                Go To Home Page
+            </button>
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<section id="profile-info">
+    <div class="container profile my-3 py-4">
+        <h2>Profile Information</h2>
+        <div class="profilecontent">
+            <h4>Username:  <span class="text-muted">{{profile.user}}</span></h4>
+            <h4>Name:  <span class="text-muted">{{profile.first_name}} {{profile.last_name}}</span></h4>
+            <h4>Email:  <span class="text-muted">{{profile.email}}</span></h4>
+            <h4>Contact Number:  <span class="text-muted">{{profile.contact_no}}</span></h4>
+        </div>
+        <p></p>
+        <button class="btn btn-info "><a href="{% url 'editProfile' %}" style="color: rgb(255, 255, 255)">Editar perfil> </a></button>
+    </div>
+
+</section>
+{% endblock content %}

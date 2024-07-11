@@ -1,0 +1,33 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<section id="yourRide">
+    <div class="container">
+            {% if riders_profile %}
+            <h2 class="py-5 mb-6">Passageiros com reservas</h2>
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">Id. </th>
+                    <th scope="col">Nome dos passageiro</th>
+                    <th scope="col">Usuário</th>
+                    <th scope="col">Email</th>
+                </tr>
+                </thead>
+                <tbody>
+                    {% for riders in riders_profile %}
+                    <tr>
+                        <th scope="row">{{forloop.counter}}</th>
+                        <td>{{riders.first_name}} {{riders.last_name}}</td>
+                        <td><a href="{% url 'profile' riders.username %}">{{riders.username}}</a></td>
+                        <td>{{riders.email}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <h2 class="py-5 mb-5">Ninguém reservou corridas suas ainda!</h2>
+            {% endif %}
+    </div>
+</section>
+{% endblock content %}

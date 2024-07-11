@@ -1,0 +1,91 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+
+<section class="top-section" onload="resetting()">
+        <div class="container-fluid h-custom">
+        <h2 class="text-center my-2">Seja um motorista Express!</h2>
+        <p></p>
+        <h4 class="text-center mb-3">Publique sua corrida aqui...</h4>
+        <h5 class="text-center mb-5">
+            Economize compartilhando sua corrida com mais passageiros!
+        </h5>
+        <div class="row d-flex justify-content-center align-items-center text-left h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4 text-left">
+            <form name="form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                <div class="form-outline mb-4 col-sm-12">
+                    <label class="form-label" for="source">Partida</label>
+                    <input type="text" name="source" id="source" class="form-control form-control-lg"
+                    placeholder="Partindo de..." required="required" />
+                </div>
+                </div>
+                <div class="row">
+                <div class="form-outline mb-4 col-sm-12">
+                    <label class="form-label" for="destination">Destino</label>
+                    <input type="text" name="destination" id="destination" class="form-control form-control-lg"
+                    placeholder="Destino a..." required="required" />
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="form-outline mb-4 col-sm-6">
+                    <label class="form-label" for="vacant_seats">Lugares disponíveis</label>
+                    <input type="number" name="vacant_seats" min="0" step="1" id="vacant_seats"
+                    class="form-control form-control-lg" placeholder="Quantidade de passageiros" maxlength="10"
+                    oninput="validity.valid||(value='');" required="required" />
+                </div>
+                <div class="form-outline mb-4 col-sm-6">
+                    <label class="form-label" for="car_name">Modelo do carro</label>
+                    <input type="text" name="car_name" id="car_name" class="form-control form-control-lg"
+                    placeholder="Modelo/Nome do Carro" required="required" />
+                </div>
+                <div class="form-outline mb-4 col-sm-6">
+                    <label class="form-label" for="car_name">Placa do carro</label>
+                    <input type="text" name="car_id" id="car_id" class="form-control form-control-lg"
+                    placeholder="Placa do Carro" required="required" />
+                </div>
+                </div>
+
+                <div class="row">
+                <div class="form-outline mb-4 col-sm-6">
+                    <label class="form-label" for="date_of_trip">Data de partida</label>
+                    <input type="date" name="date_of_trip" id="date_of_trip" class="form-control form-control-lg"
+                    placeholder="Departure Date" required="required" />
+                </div>
+                <div class="form-outline mb-4 col-sm-6">
+                    <label class="form-label" for="time_of_trip">Horário de partida</label>
+                    <input type="time" name="time_of_trip" id="time_of_trip" class="form-control form-control-lg"
+                    placeholder="Departure Time" required="required" />
+                </div>
+                </div>
+
+                <div class="row">
+                    <div class="form-outline mb-4 col-sm-12">
+                        <label class="form-label" for="price">Detalhes do ponto de encontro</label>
+                        <input type="text" name="details" id="details" class="form-control form-control-lg"
+                        oninput="validity.valid||(value='');" placeholder="Endereço, ponto de referência..." required="required" />
+                    </div>
+                    </div>
+
+                <div class="row">
+                <div class="form-outline mb-4 col-sm-12">
+                    <label class="form-label" for="price">Preço (R$)</label>
+                    <input type="number" step="0.01" name="price" id="price" class="form-control form-control-lg"
+                    oninput="validity.valid||(value='');" placeholder="Preço da corrida" required="required" />
+                </div>
+                </div>
+            
+                <div class="d-flex justify-content-center">
+                    <button type="submit" class="btn btn-outline-info btn-block btn-lg">
+                        Publicar
+                    </button>
+                </div>
+            </form>
+            </div>
+        </div>
+        </div>
+</section>
+
+{% endblock content %}

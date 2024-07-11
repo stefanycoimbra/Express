@@ -1,0 +1,74 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+    <section class="signup-title bg-image">
+        <div class="container-fluid h-custom">
+        <h2 class="py-5 text-center">Registre-se</h2>
+        <div class="row d-flex justify-content-center align-items-center text-left h-100">
+            <div class="col-md-8 col-lg-6 col-xl-4">
+            <form name="form" method="POST">
+                {% csrf_token %}
+                <div class="row">
+                <div class="form-outline mb-4 col-md-6">
+                    <label class="form-label" for="first_name">Nome</label>
+                    <input type="text" name="first_name" id="first_name" class="form-control form-control-lg"
+                    placeholder="Entre com seu primeiro nome" />
+                </div>
+                <div class="form-outline mb-4 col-md-6">
+                    <label class="form-label" for="last_name">Sobrenome</label>
+                    <input type="text" name="last_name" id="last_name" class="form-control form-control-lg"
+                    placeholder="Entre com seu sobrenome" />
+                </div>
+                </div>
+
+                <div class="form-outline mb-4">
+                <label class="form-label" for="email">Email</label>
+                <input type="email" name="email" id="email" class="form-control form-control-lg"
+                    placeholder="email@gmail.com" />
+                </div>
+
+                <div class="form-outline mb-4">
+                    <label class="form-label" for="contact_no">Telefone</label>
+                    <input type="text" name="contact_no" id="contact_no" class="form-control form-control-lg"
+                        placeholder="+55 88 999999999" />
+                </div>
+
+                <div class="form-outline mb-4">
+                <label class="form-label" for="username">Usuário</label>
+                <input type="text" name="username" id="username" class="form-control form-control-lg"
+                    placeholder="Entre com usuário" />
+                </div>
+
+                <div class="form-outline mb-4">
+                <label class="form-label" for="pass1">Senha</label>
+                <input type="password" name="pass1" id="pass1" class="form-control form-control-lg" />
+                </div>
+
+                <div class="form-outline mb-4">
+                <label class="form-label" for="pass2">Repita a senha</label>
+                <input type="password" name="pass2" id="pass2" class="form-control form-control-lg" />
+                </div>
+                <div class="form-check d-flex justify-content-center mb-5">
+                <input required type="checkbox" class="form-check-label" id="checkit" />
+                <label class="form-check-label" for="checkit">
+                    Concordo com os
+                    <a href="#!" class="text-body"><u>Termos de Serviço</u></a>
+                </label>
+                </div>
+
+                <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-info btn-block btn-lg">
+                    Finalizar registro
+                </button>
+                </div>
+
+                <p class="text-center text-muted mt-3">
+                Já tem uma conta?
+                <a href="{% url 'logIn' %}" class="fw-bold text-body"><u>Login aqui</u></a>
+                </p>
+            </form>
+            </div>
+        </div>
+        </div>
+    </section>
+{% endblock content %}

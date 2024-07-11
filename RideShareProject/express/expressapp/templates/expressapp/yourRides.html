@@ -1,0 +1,41 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<section id="yourRides">
+    <div class="container">
+        <h2 class="py-5 mb-5">Suas corridas publicadas</h2>
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th scope="col">Id. </th>
+                <th scope="col">Partida</th>
+                <th scope="col">Destino</th>
+                <th scope="col">Data</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Carro</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Lugares disponíveis</th>
+                <th scope="col">Preço</th>
+                <th scope="col">Lista de reservas</th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for ride in rides %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{ride.source}}</td>
+                    <td>{{ride.destination}}</td>
+                    <td>{{ride.date_of_trip}}</td>
+                    <td>{{ride.time_of_trip}}</td>
+                    <td>{{ride.car_name}}</td>
+                    <td>{{ride.car_id}}</td>
+                    <td>{{ride.vacant_seats}}</td>
+                    <td>{{ride.price}}</td>
+                    <td><a href="{% url 'riderInfo' ride.id %}">Lista de passageiros</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock content %}

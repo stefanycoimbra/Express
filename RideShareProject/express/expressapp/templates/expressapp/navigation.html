@@ -1,0 +1,49 @@
+<nav class="navbar navbar-expand-lg navbar-dark red">
+  <a class="navbar-brand" href="{% url 'index' %}">Express</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'about' %}">Sobre</span></a>
+      </li>
+    </ul>
+    {% if user.is_authenticated %}
+    <ul class="navbar-nav mr-3">
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Welcome {{request.user.first_name}}!
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="{% url 'profile' request.user %}">Perfil</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'yourRides' request.user.id %}">Corridas publicadas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'booking' request.user.id %}">Corridas reservadas</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" href="{% url 'logOut' %}">Log Out</a>
+        </div>
+      </li>
+    </ul>
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'pickRide' %}">Peça um Express👌</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{% url 'PubRide' %}">Publique uma corrida</a>
+      </li>
+    </ul>
+    {% else %}
+      <ul class="navbar-nav mr-3">
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logIn' %}"><i class="fa-solid fa-right-to-bracket nav-icon"></i>Log
+            In</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'register' %}"><i class="fa-solid nav-icon"></i>Registre-se</a>
+        </li>
+      </ul>
+    {% endif %}
+  </div>
+</nav>

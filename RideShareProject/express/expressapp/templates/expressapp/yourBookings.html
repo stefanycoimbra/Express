@@ -1,0 +1,44 @@
+{% extends 'expressapp/base.html' %}
+
+{% block content %}
+<section id="yourRide">
+    <div class="container">
+        {% if bookings %}
+        <h2 class="py-5 mb-5">Suas corridas reservadas</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                <th scope="col">Id. </th>
+                <th scope="col">Partida</th>
+                <th scope="col">Destino</th>
+                <th scope="col">Data</th>
+                <th scope="col">Horário</th>
+                <th scope="col">Carro</th>
+                <th scope="col">Placa</th>
+                <th scope="col">Lugares reservados</th>
+                <th scope="col">Preço (R$)</th>
+                {% comment %} <th scope="col">Ações</th> {% endcomment %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for booking in bookings %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{booking.post.source}}</td>
+                    <td>{{booking.post.destination}}</td>
+                    <td>{{booking.post.date_of_trip}}</td>
+                    <td>{{booking.post.time_of_trip}}</td>
+                    <td>{{booking.post.car_name}}</td>
+                    <td>{{booking.post.car_id}}</td>
+                    <td>{{booking.seats_booked}}</td>
+                    <td>{{booking.post.price}}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+            </table>
+            {% else %}
+            <h2 class="py-5 mb-5">Ainda não há reservas!</h2>
+            {% endif %}
+    </div>
+</section>
+{% endblock content %}
